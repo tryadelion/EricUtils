@@ -72,7 +72,7 @@ public class DateUtils {
         return ageInt.toString();
     }
 
-    public static String getMonth(int month, Locale locale) {
+    private static String getMonth(int month, Locale locale) {
         return DateFormatSymbols.getInstance(locale).getMonths()[month];
     }
 
