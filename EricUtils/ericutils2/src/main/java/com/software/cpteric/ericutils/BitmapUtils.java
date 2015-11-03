@@ -20,7 +20,7 @@ public class BitmapUtils {
      * @param pieces the total number of resulting pieces you want. 9, 8, 4, 5, 6,100.... the higher, the heavyer the workload required.
      * @return
      */
-    public Bitmap[] SliceBitmapIntoPieces(Bitmap source,int pieces){
+    public Bitmap[] sliceBitmapIntoPieces(Bitmap source,int pieces){
         Bitmap[] bmp= new Bitmap[pieces];
         pieces = Integer.parseInt(String.valueOf(Math.sqrt(pieces)));
         int k=0;
