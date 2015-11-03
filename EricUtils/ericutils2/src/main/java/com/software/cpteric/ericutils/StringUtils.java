@@ -10,7 +10,7 @@ package com.software.cpteric.ericutils;
 public class StringUtils {
     public static boolean isValid(String text) {
         if(text == null){
-            return true;
+            return false;
         }
         if(text != null && text.equalsIgnoreCase("")){
             return true;
