@@ -37,8 +37,7 @@ public class FragmentUtils {
                 FT.commit();
                 Log.e("FragmentUtils", "Success! fragment added!");
             }
-            catch (Exception c)
-            {
+            catch (Exception c) {
                 Log.e("FragmentUtils", "Failure. printing exception result:\n"+c.toString());
             }
 
