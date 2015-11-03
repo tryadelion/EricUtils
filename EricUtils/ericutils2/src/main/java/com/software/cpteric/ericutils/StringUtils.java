@@ -4,6 +4,8 @@
 
 package com.software.cpteric.ericutils;
 
+import android.util.Base64;
+
 /**
  * Created by useit on 3/11/15.
  */
@@ -16,5 +18,14 @@ public class StringUtils {
             return true;
         }
         return false;
+    }
+
+    public static String getBase64FromString(String string) {
+        return Base64.encodeToString(string.getBytes(), Base64.DEFAULT);
+    }
+
+    public static String getStringFromBase64(String base64) {
+        byte[] str = Base64.decode(base64, Base64.DEFAULT);
+        return str.toString();
     }
 }
