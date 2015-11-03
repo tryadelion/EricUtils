@@ -84,7 +84,7 @@ public class DateUtils {
     }
 
     public static boolean isEarlier(Date d1,Date d2) {
-        if (d1 == null ) {
+        if (d1 == null || d2 == null) {
             return false;
         }
         Calendar cal1 = Calendar.getInstance();
