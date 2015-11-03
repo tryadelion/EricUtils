@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
  * Created by useit on 3/11/15.
  */
 public class MapUtils {
+
     public static LatLng getMidPoint(LatLng one, LatLng two) {//[(a+c)/2,(b+d)/2]
         double a = one.latitude;
         double b = one.longitude;
@@ -24,6 +25,7 @@ public class MapUtils {
         double d = two.longitude;
         return new LatLng(((a + c) / 2), ((b + d) / 2));
     }
+
     public static GoogleMap getMapFrom(FragmentActivity activity,Fragment mapFragment,int mapLayoutResourceId) {
         SupportMapFragment frag = getMapFragment(activity, mapFragment, mapLayoutResourceId);
         if(frag != null) {
@@ -33,6 +35,7 @@ public class MapUtils {
             return null;
         }
     }
+    
     private static SupportMapFragment getMapFragment(FragmentActivity a,Fragment b,int id) {
         FragmentManager fm = null;
 
