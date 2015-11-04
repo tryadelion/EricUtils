@@ -85,7 +85,7 @@ calling the ``` setContentView(layoutId()) ``` will retrieve the activity's layo
 we then retrieve if the window is meant to have a go back home button on the toolbar. 
 ``` Boolean interior  = setupView(); ```
 
-using the layout id get wet the activity title and set it up, and also put if necessary the homeup button.
+using the layout id we then get the activity title and set it up, and also put if necessary the homeup button.
 ```java
 text.setText(findViewText(layoutId()));
 if (interior) {
