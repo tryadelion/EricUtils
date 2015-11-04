@@ -7,7 +7,7 @@ The classes named xUtils (MapUtils, DateUtils), contain for now a dozen or so me
 
 ## 2 - AbstractActivity
 
-This is a fancy class. to implement it, create a custom activity class (MyAbstractActivity) , and extend abstract activity. this will provide some cool fucntionality.
+This is a fancy class. to implement it, create a custom activity class (MyAbstractActivity) , and extend abstract activity. this will provide some cool functionality.
 
 i'll start showing off the abstract activity code.
 
