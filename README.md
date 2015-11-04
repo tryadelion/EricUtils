@@ -19,4 +19,4 @@ Soon to be added, those classes should provide even more functionality to my uti
 
 using Jcenter() on your gradle file of choice ( but it won't work unless it's in your app's build.gradle),
 
-compile 'com.cpteric:ericutils2:0.+'
+> compile 'com.cpteric:ericutils2:0.+'
