@@ -44,7 +44,7 @@ Examples:
 
 Opening a news item without passing any data through intent.
 !warning: this way of working must be done really thread-safe. 
-Do not make multiple calls to the next static objects from dfifferent threads, 
+Do not make multiple calls to the next static objects from different threads, 
 and always end the calls of any involved thread
 
 \\currentNewsItem Example
