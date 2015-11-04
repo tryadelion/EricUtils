@@ -38,7 +38,7 @@ public abstract class MyAbstractActivity extends AbstractActivity {
         TextView text = (TextView) t.findViewById(R.id.toolbarTtitle);
         text.setText(findViewText(layoutId()));
         if (interior) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            toolbar.setDisplayHomeAsUpEnabled(true);
         }
 
     }
