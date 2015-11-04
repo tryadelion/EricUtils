@@ -1,0 +1,41 @@
+MVC implementation on a android app
+
+On this blog post we will cover how to sucessfuly setup a mvc environement on an android app.
+First of all, loose any fear you could have about the use of static methods/variables, that's how we'll roll in the shire from now on.
+You will need the next external libraries:
+- greenrobot's eventbus
+- sqlite orm solution ( sugar, greendao...)
+- http petition solution ( volley, ion, asynchttp...)
+- butterknife ( optional ) \  androidAnnotations(optional)
+
+How will this work?
+
+We will organize the app in 3 or more packages:
+- Managers
+- Activities
+- Events
+The manager classes will provide the necessary communications between app,web server and bbdd.
+The activities will use the manager's methods, won't directly make any bbdd\http petition and will recieve the results via events.
+The events will be bridges between a petition and a reciever class, and will contain the result, and the petition's possible extra values.
+
+We'll start with an easy one:
+\\ApiManager + NewsManager + NewsRecievedEvent + HomeActivity example
+
+Here we saw how easily you can setup a model view controller framework.
+Now let's make it funnier with sugarORM
+
+\\latest + sugarORM example.
+
+See? Now the event only notifies of the petition's result, And then we request via the BBDDManager the list of news, and, if empty, then we call the api for it. Else, we'll load them from bbdd.
+
+But what if want it to check for latest news?
+Well, you can always check user's system time against the latest news creation date, if it's longer than, let's say 1 hour, refresh again, and add a pull-to-refresh or a refesh icon to force the api retrieval. Examples:
+
+\\\wathever dude
+
+Opening a news item without passing any data through intent.
+!warning: this way of working must be really thread-safe. Do not make multiple calls to the next static objects from dfifferent threads, and always end the calls of any involved thread
+
+\\currentNewsItem Example
+
+And that's it! From this example you will succeed on more complex architectures.
