@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.cpteric'
     PUBLISH_ARTIFACT_ID = 'ericutils2'
-    PUBLISH_VERSION = '0.0.3'
+    PUBLISH_VERSION = '0.0.4'
 }
 android {
     compileSdkVersion 23
@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName "0.0.3"
+        versionCode 4
+        versionName "0.0.4"
     }
     buildTypes {
         release {
@@ -30,6 +30,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.google.android.gms:play-services:6.5.87'
-    compile files("${System.properties['java.home']}/../lib/tools.jar")
+    //compile files("${System.properties['java.home']}/../lib/tools.jar")
 }
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
