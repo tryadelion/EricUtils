@@ -10,10 +10,22 @@ import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
- * Created by useit on 3/11/15.
+ * Created by useit on 03/11/15.
+ * Updated by Mauker1 on 03/12/15.
  */
-public class BitmapUtils {
+public final class BitmapUtils {
+
+    private static final String LOG_TAG = BitmapUtils.class.getCanonicalName();
+    
+    // Hide this shit.
+    private BitmapUtils() { }
+
     /**
      *
      * @param source the bitmap to be butchered, sliced, killed and packed into an array.
@@ -46,5 +58,35 @@ public class BitmapUtils {
         byte[] decodedString = Base64.decode(base64, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+    public static boolean saveBitmapToFile(File dir, String fileName, Bitmap bm,
+                                Bitmap.CompressFormat format, int quality) {
+
+        File imageFile = new File(dir,fileName);
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(imageFile);
+
+            bm.compress(format,quality,fos);
+
+            fos.close();
+
+            return true;
+        }
+        catch (IOException e) {
+            Log.e(LOG_TAG, e.getMessage());
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e1) {
+                    Log.e(LOG_TAG, "Couldn't close FileOutputStream!");
+                    Log.e(LOG_TAG, e1.getMessage());
+                }
+            }
+        }
+
+        return false;
     }
 }
