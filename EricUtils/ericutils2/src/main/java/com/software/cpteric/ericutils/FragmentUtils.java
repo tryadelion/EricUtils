@@ -14,6 +14,8 @@ import android.util.Log;
  */
 
 public class FragmentUtils {
+    private static final String LOG_TAG = "FragmentUtils";
+
     /**
      *
      * @param id the Layout Id where the fragment will be inserted (Framelayout, for example)
@@ -22,23 +24,23 @@ public class FragmentUtils {
      */
     public static void replaceFragment(int id, Fragment fragment, FragmentManager frgm) {
         try{
-            Log.e("FragmentUtils","Beginning fragment transaction");
+            Log.e(LOG_TAG,"Beginning fragment transaction");
             FragmentTransaction FT = frgm.beginTransaction();
             FT.replace(id, fragment);
             FT.commit();
-            Log.e("FragmentUtils", "Success! fragment replaced!");
+            Log.i(LOG_TAG, "Success! fragment replaced!");
         }
         catch (Exception e){
             try{
-                Log.e("FragmentUtils", "There was no fragment prior to the request. trying to add the fragment.");
+                Log.e(LOG_TAG, "There was no fragment prior to the request. trying to add the fragment.");
                 FragmentTransaction FT = frgm.beginTransaction();
                 FT.add(id, fragment);
                 FT.addToBackStack(null);
                 FT.commit();
-                Log.e("FragmentUtils", "Success! fragment added!");
+                Log.e(LOG_TAG, "Success! fragment added!");
             }
             catch (Exception c) {
-                Log.e("FragmentUtils", "Failure. printing exception result:\n"+c.toString());
+                Log.e(LOG_TAG, "Failure. printing exception result:\n"+c.toString());
             }
 
         }
