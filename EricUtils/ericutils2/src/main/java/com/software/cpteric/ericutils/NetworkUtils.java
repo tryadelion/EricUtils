@@ -7,13 +7,21 @@ package com.software.cpteric.ericutils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by useit on 3/11/15.
+ * * Updated by CptEric on 07/01/16.
  */
 public class NetworkUtils {
+    private static ConnectivityManager connectivity;
     public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity == null) {
 
         } else {
@@ -37,7 +45,7 @@ public class NetworkUtils {
      * @return true if the current connection is high speed (3G,4G or WiFi). False otherwise.
      */
     public static boolean isHighSpeedConnection(Context context) {
-        NetworkInfo info = Connectivity.getNetworkInfo(context);
+        NetworkInfo info = connectivity.getActiveNetworkInfo();
         int type = info.getType();
         int subType = info.getSubtype();
 
@@ -69,5 +77,27 @@ public class NetworkUtils {
         else{
             return false;
         }
+    }
+
+    /**
+     *
+     * @param context describes the context of the execution.
+     * @param searchFirst if true, it will force a scan, else, it will use the current device scan.
+     * @return the list of SSID's in the network.
+     */
+    public static List<String> getWifiSSIDs(Context context,Boolean searchFirst){
+        WifiManager mgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        List<ScanResult> results;
+        List<String> returnValues = new ArrayList<>();
+        if(searchFirst){
+            mgr.startScan();
+            results = mgr.getScanResults();
+        }else{
+            results = mgr.getScanResults();
+        }
+        for(ScanResult r : results){
+            returnValues.add(r.SSID);
+        }
+        return returnValues;
     }
 }

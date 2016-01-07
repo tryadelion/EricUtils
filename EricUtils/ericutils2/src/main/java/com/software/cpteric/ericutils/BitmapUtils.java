@@ -7,17 +7,17 @@ package com.software.cpteric.ericutils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
  * Created by useit on 03/11/15.
  * Updated by Mauker1 on 03/12/15.
+ * Updated by CptEric on 07/01/16.
  */
 public final class BitmapUtils {
 
