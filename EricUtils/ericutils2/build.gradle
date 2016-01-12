@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.cpteric'
     PUBLISH_ARTIFACT_ID = 'ericutils2'
-    PUBLISH_VERSION = '0.0.4'
+    PUBLISH_VERSION = '0.0.5'
 }
 android {
     compileSdkVersion 23
@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 4
-        versionName "0.0.4"
+        versionCode 5
+        versionName "0.0.5"
     }
     buildTypes {
         release {
