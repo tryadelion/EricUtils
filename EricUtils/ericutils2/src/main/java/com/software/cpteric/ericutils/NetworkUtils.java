@@ -7,17 +7,24 @@ package com.software.cpteric.ericutils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by useit on 3/11/15.
+ * * Updated by CptEric on 07/01/16.
  */
 public class NetworkUtils {
-    public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity == null) {
+    private static ConnectivityManager cM;
 
-        } else {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+    public static boolean isNetworkAvailable(Context context) {
+        cM = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cM != null) {
+            NetworkInfo[] info = cM.getAllNetworkInfo();
             if (info != null) {
                 for (int i = 0; i < info.length; i++) {
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) {
@@ -71,5 +78,27 @@ public class NetworkUtils {
         else{
             return false;
         }
+    }
+
+    /**
+     *
+     * @param context describes the context of the execution.
+     * @param searchFirst if true, it will force a scan, else, it will use the current device scan.
+     * @return the list of SSID's in the network.
+     */
+    public static List<String> getWifiSSIDs(Context context,Boolean searchFirst){
+        WifiManager mgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        List<ScanResult> results;
+        List<String> returnValues = new ArrayList<>();
+        if(searchFirst){
+            mgr.startScan();
+            results = mgr.getScanResults();
+        }else{
+            results = mgr.getScanResults();
+        }
+        for(ScanResult r : results){
+            returnValues.add(r.SSID);
+        }
+        return returnValues;
     }
 }
